@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitalk - Belajar Skill Digital</title>
+    
+    <!-- Menggunakan Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Menggunakan Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Menggunakan Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Konfigurasi Tema Pastel di Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        pastel: {
+                            bg: '#FEFCF3',      // Krem sangat muda
+                            pink: '#FFCACC',    // Pink pastel
+                            blue: '#DBC4F0',    // Ungu/Biru pastel
+                            green: '#D4E2D4',   // Hijau pastel
+                            yellow: '#F5E8C7',  // Kuning pastel
+                            text: '#4A4A4A',    // Abu-abu gelap untuk teks (mudah dibaca)
+                            textLight: '#7A7A7A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Efek Kaca (Glassmorphism) untuk Navbar */
+        .glass-nav {
+            background: rgba(254, 252, 243, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 202, 204, 0.3);
+        }
+        
+        /* Animasi Mengambang Sederhana */
+        .float-anim {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-pastel-bg text-pastel-text font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="bg-pastel-pink p-2 rounded-xl text-white">
+                        <i data-lucide="messages-square" class="w-6 h-6 text-[#4A4A4A]"></i>
+                    </div>
+                    <span class="font-extrabold text-2xl tracking-tight text-pastel-text">Digi<span class="text-pink-400">talk</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center font-semibold">
+                    <a href="#beranda" class="text-pastel-text hover:text-pink-400 transition">Beranda</a>
+                    <a href="#keunggulan" class="text-pastel-text hover:text-pink-400 transition">Keunggulan</a>
+                    <a href="#kelas" class="text-pastel-text hover:text-pink-400 transition">Kelas Tersedia</a>
+                    <a href="#testimoni" class="text-pastel-text hover:text-pink-400 transition">Testimoni</a>
+                </div>
+
+                <!-- Tombol Aksi -->
+                <div class="hidden md:flex space-x-4">
+                    <button class="px-5 py-2.5 font-bold text-pastel-text hover:text-pink-500 transition">Masuk</button>
+                    <button class="px-6 py-2.5 bg-pastel-pink hover:bg-pink-300 text-pastel-text font-bold rounded-full shadow-sm hover:shadow-md transition-all">Daftar Sekarang</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-pastel-text hover:text-pink-400 focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-pastel-bg border-t border-pink-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2 font-semibold">
+                <a href="#beranda" class="block px-3 py-3 rounded-lg hover:bg-pastel-pink/30">Beranda</a>
+                <a href="#keunggulan" class="block px-3 py-3 rounded-lg hover:bg-pastel-pink/30">Keunggulan</a>
+                <a href="#kelas" class="block px-3 py-3 rounded-lg hover:bg-pastel-pink/30">Kelas Tersedia</a>
+                <div class="pt-4 flex flex-col gap-3 border-t border-pink-100">
+                    <button class="w-full py-3 font-bold border-2 border-pastel-pink rounded-xl text-pastel-text">Masuk</button>
+                    <button class="w-full py-3 bg-pastel-pink text-pastel-text font-bold rounded-xl shadow-sm">Daftar Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden relative">
+        <!-- Dekorasi Latar Belakang -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-pastel-yellow rounded-full mix-blend-multiply filter blur-3xl opacity-60 float-anim"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-pastel-blue rounded-full mix-blend-multiply filter blur-3xl opacity-50 float-anim" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Teks -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pastel-green/50 text-sm font-bold mb-6">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        Platform Belajar Terpopuler 2026
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                        Kuasai Skill Digital dengan Cara <span class="text-pink-500">Menyenangkan!</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-pastel-textLight mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Belajar desain, programming, dan marketing bersama mentor ahli. Mulai langkah pertamamu menuju karir impian sekarang juga.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="px-8 py-4 bg-pastel-blue hover:bg-purple-300 text-pastel-text font-bold rounded-full text-lg shadow-lg shadow-blue-200 transition transform hover:-translate-y-1">
+                            Mulai Belajar Gratis
+                        </button>
+                        <button class="px-8 py-4 bg-white hover:bg-gray-50 border-2 border-pastel-blue text-pastel-text font-bold rounded-full text-lg flex items-center justify-center gap-2 transition">
+                            <i data-lucide="play-circle" class="w-5 h-5"></i> Lihat Video
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Gambar/Ilustrasi -->
+                <div class="relative w-full h-[400px] lg:h-[500px]">
+                    <div class="absolute inset-0 bg-pastel-pink rounded-[3rem] transform rotate-3 float-anim"></div>
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mahasiswa Belajar" class="absolute inset-0 w-full h-full object-cover rounded-[3rem] shadow-xl transform -rotate-3 transition hover:rotate-0 duration-500">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-pastel-yellow p-3 rounded-full">
+                            <i data-lucide="star" class="w-6 h-6 text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-extrabold text-xl">4.9/5</p>
+                            <p class="text-sm text-pastel-textLight">Rating Siswa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section id="keunggulan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Kenapa Belajar di Digitalk?</h2>
+                <p class="text-pastel-textLight text-lg max-w-2xl mx-auto">Kami merancang pengalaman belajar senyaman mungkin agar kamu bisa fokus menyerap ilmu.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-pastel-bg p-8 rounded-3xl border border-pink-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-pastel-pink rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition">
+                        <i data-lucide="clock" class="w-8 h-8 text-pastel-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Waktu Fleksibel</h3>
+                    <p class="text-pastel-textLight">Belajar kapan saja dan di mana saja. Akses materi selamanya tanpa batasan waktu.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-pastel-bg p-8 rounded-3xl border border-blue-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-pastel-blue rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition">
+                        <i data-lucide="users" class="w-8 h-8 text-pastel-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mentor Berpengalaman</h3>
+                    <p class="text-pastel-textLight">Dibimbing langsung oleh praktisi ahli yang sudah bekerja di industri ternama.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-pastel-bg p-8 rounded-3xl border border-green-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-pastel-green rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition">
+                        <i data-lucide="award" class="w-8 h-8 text-pastel-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sertifikat Resmi</h3>
+                    <p class="text-pastel-textLight">Dapatkan sertifikat penyelesaian yang diakui untuk meningkatkan profil profesionalmu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kelas Tersedia Section -->
+    <section id="kelas" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Kelas Terpopuler</h2>
+                    <p class="text-pastel-textLight text-lg">Pilih kelas yang sesuai dengan minat dan bakatmu.</p>
+                </div>
+                <button class="mt-4 md:mt-0 font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1 group">
+                    Lihat Semua Kelas <i data-lucide="arrow-right" class="w-5 h-5 transform group-hover:translate-x-1 transition"></i>
+                </button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                    <div class="h-48 bg-pastel-yellow relative flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" class="w-full h-full object-cover opacity-80 mix-blend-overlay hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-sm font-bold rounded-full">🎨 Desain</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-pastel-textLight text-sm mb-3">
+                            <i data-lucide="book-open" class="w-4 h-4"></i> 24 Modul
+                            <span class="mx-2">•</span>
+                            <i data-lucide="bar-chart" class="w-4 h-4"></i> Pemula
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Mastering UI/UX Design</h3>
+                        <p class="text-pastel-textLight text-sm mb-6 line-clamp-2">Belajar membuat desain aplikasi yang indah dan mudah digunakan dari nol menggunakan Figma.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-extrabold text-lg text-pink-500">Rp 299.000</span>
+                            <button class="px-4 py-2 bg-pastel-yellow hover:bg-yellow-200 text-pastel-text font-bold rounded-xl transition">Daftar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                    <div class="h-48 bg-pastel-blue relative flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Web Development" class="w-full h-full object-cover opacity-80 mix-blend-overlay hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-sm font-bold rounded-full">💻 Pemrograman</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-pastel-textLight text-sm mb-3">
+                            <i data-lucide="book-open" class="w-4 h-4"></i> 32 Modul
+                            <span class="mx-2">•</span>
+                            <i data-lucide="bar-chart" class="w-4 h-4"></i> Menengah
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Fullstack Web Developer</h3>
+                        <p class="text-pastel-textLight text-sm mb-6 line-clamp-2">Kuasai HTML, CSS, JavaScript, hingga React & Node.js untuk membuat website canggih.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-extrabold text-lg text-pink-500">Rp 349.000</span>
+                            <button class="px-4 py-2 bg-pastel-blue hover:bg-blue-200 text-pastel-text font-bold rounded-xl transition">Daftar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                    <div class="h-48 bg-pastel-green relative flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Digital Marketing" class="w-full h-full object-cover opacity-80 mix-blend-overlay hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-sm font-bold rounded-full">📈 Pemasaran</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-pastel-textLight text-sm mb-3">
+                            <i data-lucide="book-open" class="w-4 h-4"></i> 18 Modul
+                            <span class="mx-2">•</span>
+                            <i data-lucide="bar-chart" class="w-4 h-4"></i> Semua Level
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Digital Marketing 101</h3>
+                        <p class="text-pastel-textLight text-sm mb-6 line-clamp-2">Pahami strategi social media, SEO, dan Facebook Ads untuk melipatgandakan penjualan.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-extrabold text-lg text-pink-500">Rp 249.000</span>
+                            <button class="px-4 py-2 bg-pastel-green hover:bg-green-200 text-pastel-text font-bold rounded-xl transition">Daftar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Ajakan Bergabung -->
+    <section class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-pastel-pink to-pastel-blue rounded-[3rem] p-10 md:p-16 text-center relative overflow-hidden">
+            <!-- Pola lingkaran dekoratif -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-20 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+            
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 relative z-10 text-pastel-text">Siap untuk Mulai Belajar?</h2>
+            <p class="text-lg md:text-xl text-pastel-text/80 mb-8 max-w-2xl mx-auto relative z-10">Bergabunglah dengan ribuan siswa lainnya yang telah sukses meraih karir impian mereka bersama Digitalk.</p>
+            <button class="relative z-10 px-8 py-4 bg-white text-pastel-text font-extrabold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition text-lg">
+                Buat Akun Gratis Sekarang
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Info Brand -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="bg-pastel-pink p-1.5 rounded-lg text-white">
+                            <i data-lucide="messages-square" class="w-5 h-5 text-[#4A4A4A]"></i>
+                        </div>
+                        <span class="font-extrabold text-xl text-pastel-text">Digi<span class="text-pink-400">talk</span></span>
+                    </div>
+                    <p class="text-pastel-textLight text-sm mb-6">Membantu generasi muda Indonesia menguasai keterampilan digital dengan cara yang asyik dan mudah dipahami.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-pastel-bg flex items-center justify-center hover:bg-pastel-pink transition">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-pastel-bg flex items-center justify-center hover:bg-pastel-blue transition">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-pastel-bg flex items-center justify-center hover:bg-pastel-yellow transition">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Perusahaan</h4>
+                    <ul class="space-y-4 text-pastel-textLight text-sm">
+                        <li><a href="#" class="hover:text-pink-500 transition">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Karir</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Layanan</h4>
+                    <ul class="space-y-4 text-pastel-textLight text-sm">
+                        <li><a href="#" class="hover:text-pink-500 transition">Kelas Tersedia</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Mentoring Pribadi</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Ujian Sertifikasi</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Digitalk untuk Bisnis</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 3 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Bantuan</h4>
+                    <ul class="space-y-4 text-pastel-textLight text-sm">
+                        <li><a href="#" class="hover:text-pink-500 transition">Pusat Bantuan</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 text-center text-sm text-pastel-textLight">
+                <p>&copy; 2026 Digitalk. Dibuat dengan ❤️ untuk pembelajaran yang lebih baik.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Inisialisasi Icon & Menu Mobile -->
+    <script>
+        // Mengubah tag <i> menjadi icon Lucide SVG
+        lucide.createIcons();
+
+        // Logika untuk tombol menu di Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Menutup menu mobile ketika salah satu link diklik
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
